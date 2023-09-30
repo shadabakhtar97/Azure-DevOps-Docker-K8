@@ -102,7 +102,7 @@ Here's a comparison of blue-green and canary deployments in a tabular form to hi
 
 Both blue-green and canary deployments have their own advantages and are suitable for different scenarios. Blue-green deployments are more focused on minimizing downtime and providing a clear rollback path, while canary deployments are focused on risk mitigation and early issue detection. The choice between the two strategies depends on the specific needs and goals of your deployment process.
 ### ----------------------------------------------------------------------------------------------------------------
-### Prerequisites for Azure DevOps, Docker and Kubernetes on Om-premises
+### Prerequisites for Azure DevOps, Docker and Kubernetes on On-premises
 Before you can set up Azure DevOps, Docker, and Kubernetes on-premises, you need to ensure that your infrastructure and environment meet certain prerequisites. Here are the key prerequisites for each of these components:
 
 ### Prerequisites for Azure DevOps:
