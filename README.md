@@ -1,7 +1,7 @@
 # Azure-DevOps-Docker-K8
 Learn Azure DevOps with Docker and Kubernetes Deep Dive
 
-### Azure DevOps Continuous as Blue-Green Deployments
+### Azure DevOps as Blue-Green Continuous Deployments
 Azure DevOps provides powerful tools for implementing continuous deployment pipelines, including support for blue-green deployments. Blue-green deployments are a deployment strategy that allows you to release a new version of your application without causing downtime for your users. Here's how you can set up blue-green deployments in Azure DevOps:
 
 1. **Azure Resource Setup**:
