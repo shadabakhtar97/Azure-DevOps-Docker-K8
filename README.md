@@ -83,3 +83,21 @@ Here's a detailed overview of how you can implement canary deployments in Azure 
 
 By implementing canary deployments in Azure DevOps, you can reduce the risk of deploying changes to your production environment and ensure that new features or changes do not negatively impact your users. This strategy allows for controlled and gradual releases, making it easier to catch and mitigate issues before they affect your entire user base.
 ### ------------------------------------------------------------------------------------------------------------------
+### Differences between blue-green and canary deployment in tabular form
+Here's a comparison of blue-green and canary deployments in a tabular form to highlight the key differences between these two deployment strategies:
+
+| Aspect                       | Blue-Green Deployment                    | Canary Deployment                            |
+|-------------------------------|----------------------------------------|----------------------------------------------|
+| Purpose                       | Minimize downtime during releases by switching between two environments. | Gradually release a new version to a subset of users or servers to mitigate risks. |
+| Number of Environments        | Requires two separate environments: blue and green. | Typically uses a single environment with controlled traffic routing. |
+| Initial Deployment            | The new version is fully deployed to one environment (e.g., green). | The new version is partially deployed to a subset of users or servers. |
+| Traffic Routing               | Traffic is switched entirely from the old version (blue) to the new version (green). | Only a portion of user traffic is directed to the new version (canary), while the rest goes to the old version. |
+| Risk Mitigation               | Reduces risk by providing a full rollback option if issues arise. | Reduces risk by limiting the impact to a subset of users or servers, allowing for quicker detection and mitigation. |
+| Rollback                      | Rollback involves switching traffic back to the old version (blue). | Rollback involves redirecting all traffic away from the canary deployment. |
+| Deployment Verification       | Verification often involves comparing the old (blue) and new (green) environments. | Verification focuses on monitoring and comparing the canary deployment with the stable version. |
+| Suitable Scenarios           | Well-suited for applications where downtime should be avoided at all costs. | Suitable for applications where you want to test new features with a limited audience before a full release. |
+| Automation and Orchestration  | Automation is typically used to switch traffic between blue and green environments. | Automation is used to control traffic routing to the canary environment and gather monitoring data. |
+| Complexity                    | Simplicity in terms of environment setup but requires careful traffic switching. | More complex monitoring and traffic control setup. |
+| Use Cases                     | Often used for mission-critical applications with strict uptime requirements. | Beneficial for testing new features or changes in a controlled manner, especially when the impact of changes is uncertain. |
+
+Both blue-green and canary deployments have their own advantages and are suitable for different scenarios. Blue-green deployments are more focused on minimizing downtime and providing a clear rollback path, while canary deployments are focused on risk mitigation and early issue detection. The choice between the two strategies depends on the specific needs and goals of your deployment process.
