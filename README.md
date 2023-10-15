@@ -1,6 +1,89 @@
 # Azure-DevOps-Docker-K8
 Learn Azure DevOps with Docker and Kubernetes Deep Dive
-### 
+### Prerequisites for Azure DevOps, Docker and Kubernetes on On-premises
+Before you can set up Azure DevOps, Docker, and Kubernetes on-premises, you need to ensure that your infrastructure and environment meet certain prerequisites. Here are the key prerequisites for each of these components:
+
+### Prerequisites for Azure DevOps:
+
+1. **Server Hardware**: Ensure that you have the necessary server hardware to host Azure DevOps Server (formerly known as Team Foundation Server or TFS). This includes sufficient CPU, RAM, and storage capacity based on your organization's needs.
+
+2. **Operating System**: Choose a Windows Server operating system that is compatible with the version of Azure DevOps Server you plan to install.
+
+3. **SQL Server**: You will need a SQL Server instance to host the Azure DevOps Server databases. Ensure SQL Server is properly installed and configured. Azure DevOps Server supports several versions of SQL Server; check compatibility documentation for details.
+
+4. **Active Directory**: If you plan to integrate Azure DevOps Server with your organization's Active Directory for user management, ensure that Active Directory is set up and configured correctly.
+
+5. **Network Configuration**: Configure your network to allow communication between Azure DevOps Server, client machines, and other necessary components. Ensure that the required ports are open for inbound and outbound traffic.
+
+6. **DNS Configuration**: Set up DNS records for the Azure DevOps Server to ensure proper domain name resolution.
+
+7. **SSL Certificate**: Consider securing your Azure DevOps Server with an SSL certificate to enable HTTPS communication.
+
+8. **Permissions**: Ensure that the user accounts who will administer Azure DevOps Server have the necessary permissions on the server and SQL Server databases.
+
+### Prerequisites for Docker:
+
+1. **Supported Operating System**: Docker is available for various operating systems, including Linux, Windows, and macOS. Ensure that your on-premises server's operating system is compatible with Docker.
+
+2. **Hardware Virtualization**: For Windows and macOS, ensure that hardware virtualization is enabled in the BIOS/UEFI settings of your server. This is required for running Docker containers.
+
+3. **Docker Installation**: Install Docker on your on-premises server by following the official installation instructions for your specific operating system.
+
+4. **Docker Compose (Optional)**: If you plan to use Docker Compose for managing multi-container applications, ensure it is installed as well.
+
+### Prerequisites for Kubernetes:
+
+1. **Linux Nodes**: If you are setting up a Kubernetes cluster on-premises, you'll need Linux servers to act as worker nodes. Ensure these servers meet the hardware requirements for Kubernetes.
+
+2. **Container Runtime**: Choose a container runtime compatible with Kubernetes, such as Docker, containerd, or CRI-O. Install and configure the container runtime on each worker node.
+
+3. **Kubernetes Control Plane**: Set up a Kubernetes control plane (master node) on a dedicated server or VM. You can use Kubernetes distributions like kubeadm, kops, or Rancher to help with this setup.
+
+4. **Networking**: Ensure that the network is correctly configured to allow communication between nodes in the cluster. Kubernetes uses a range of ports for internal communication.
+
+5. **Container Images**: Prepare and store container images of your application in a container registry accessible to your cluster, such as Docker Hub, Azure Container Registry, or an on-premises registry.
+
+6. **kubectl**: Install the `kubectl` command-line tool on your management machine. `kubectl` is used for interacting with the Kubernetes cluster.
+
+7. **Security and Access Control**: Implement security best practices for your Kubernetes cluster, including role-based access control (RBAC) and network policies.
+
+8. **Storage**: Set up storage solutions like NFS, Ceph, or local storage for persistent volumes in your Kubernetes cluster.
+
+9. **Monitoring and Logging**: Plan for monitoring and logging solutions (e.g., Prometheus, Grafana, ELK Stack) to gain visibility into the cluster's performance and troubleshoot issues.
+
+### --------------------------------------------------------------------------------------------
+### To use Azure DevOps with Docker and Kubernetes on an on-premises Ubuntu environment, you would typically need the following Azure subscriptions and resources:
+
+1. Azure Subscription:
+   You'll need an Azure subscription to manage and orchestrate the resources you use in Azure DevOps, such as virtual machines, containers, and Kubernetes clusters. You can choose from various subscription types, including pay-as-you-go, Enterprise Agreement, or others, depending on your organization's needs.
+
+2. Azure DevOps Organization:
+   You will need an Azure DevOps organization to create and manage your pipelines, repositories, and DevOps processes. You can create an organization in Azure DevOps (formerly known as Visual Studio Team Services) by signing up for a free or paid plan.
+
+3. Azure Kubernetes Service (AKS):
+   If you plan to run Kubernetes workloads on Azure, you can use Azure Kubernetes Service (AKS). This service allows you to create, manage, and scale Kubernetes clusters in Azure. While AKS primarily targets Azure-hosted Kubernetes clusters, you can also connect AKS to on-premises Kubernetes clusters using Azure Arc. Ensure that your AKS cluster is properly configured for your on-premises environment.
+
+4. On-Premises Ubuntu Servers:
+   Your on-premises environment will require Ubuntu servers to run Docker containers and potentially host Kubernetes components if you're setting up a self-managed Kubernetes cluster. Ensure that these servers meet the hardware and software requirements for your workloads.
+
+5. Docker:
+   Install Docker on your Ubuntu servers. Docker is used to run containers, which are essential for deploying applications. You can install Docker on Ubuntu by following the official Docker documentation.
+
+6. Kubernetes:
+   If you plan to manage a self-hosted Kubernetes cluster on your Ubuntu servers, you'll need to install and configure Kubernetes components such as kubectl, kubelet, and kubeadm on each node. Refer to the Kubernetes documentation for Ubuntu-specific installation instructions.
+
+7. Azure DevOps Agents:
+   You'll need to set up Azure DevOps agents on your on-premises Ubuntu servers. These agents are responsible for executing tasks and jobs defined in your Azure DevOps pipelines. Make sure the agents are properly configured and registered with your Azure DevOps organization.
+
+8. Azure Arc (Optional):
+   If you want to manage and monitor on-premises Kubernetes clusters alongside Azure resources, you can use Azure Arc for Kubernetes. This is an optional but valuable feature that extends Azure management capabilities to on-premises clusters.
+
+Ensure that your Azure subscription is properly configured with the necessary permissions and access rights for managing resources, and that your Ubuntu servers are securely configured for your specific workload requirements. The exact setup and configuration may vary based on your organization's needs and the specific Kubernetes and Docker solutions you plan to implement.
+
+11. **Backup and Disaster Recovery**: Implement backup and disaster recovery procedures to protect your Kubernetes cluster and applications.
+
+Ensure that you thoroughly review the documentation for each component and follow best practices for installation, configuration, and security to ensure a stable and secure on-premises DevOps, Docker, and Kubernetes environment.
+### ----------------------------------------------------------------------------------------------------------------
 ### Azure DevOps as Blue-Green Continuous Deployments
 Azure DevOps provides powerful tools for implementing continuous deployment pipelines, including support for blue-green deployments. Blue-green deployments are a deployment strategy that allows you to release a new version of your application without causing downtime for your users. Here's how you can set up blue-green deployments in Azure DevOps:
 
@@ -102,58 +185,4 @@ Here's a comparison of blue-green and canary deployments in a tabular form to hi
 
 Both blue-green and canary deployments have their own advantages and are suitable for different scenarios. Blue-green deployments are more focused on minimizing downtime and providing a clear rollback path, while canary deployments are focused on risk mitigation and early issue detection. The choice between the two strategies depends on the specific needs and goals of your deployment process.
 ### ----------------------------------------------------------------------------------------------------------------
-### Prerequisites for Azure DevOps, Docker and Kubernetes on On-premises
-Before you can set up Azure DevOps, Docker, and Kubernetes on-premises, you need to ensure that your infrastructure and environment meet certain prerequisites. Here are the key prerequisites for each of these components:
 
-### Prerequisites for Azure DevOps:
-
-1. **Server Hardware**: Ensure that you have the necessary server hardware to host Azure DevOps Server (formerly known as Team Foundation Server or TFS). This includes sufficient CPU, RAM, and storage capacity based on your organization's needs.
-
-2. **Operating System**: Choose a Windows Server operating system that is compatible with the version of Azure DevOps Server you plan to install.
-
-3. **SQL Server**: You will need a SQL Server instance to host the Azure DevOps Server databases. Ensure SQL Server is properly installed and configured. Azure DevOps Server supports several versions of SQL Server; check compatibility documentation for details.
-
-4. **Active Directory**: If you plan to integrate Azure DevOps Server with your organization's Active Directory for user management, ensure that Active Directory is set up and configured correctly.
-
-5. **Network Configuration**: Configure your network to allow communication between Azure DevOps Server, client machines, and other necessary components. Ensure that the required ports are open for inbound and outbound traffic.
-
-6. **DNS Configuration**: Set up DNS records for the Azure DevOps Server to ensure proper domain name resolution.
-
-7. **SSL Certificate**: Consider securing your Azure DevOps Server with an SSL certificate to enable HTTPS communication.
-
-8. **Permissions**: Ensure that the user accounts who will administer Azure DevOps Server have the necessary permissions on the server and SQL Server databases.
-
-### Prerequisites for Docker:
-
-1. **Supported Operating System**: Docker is available for various operating systems, including Linux, Windows, and macOS. Ensure that your on-premises server's operating system is compatible with Docker.
-
-2. **Hardware Virtualization**: For Windows and macOS, ensure that hardware virtualization is enabled in the BIOS/UEFI settings of your server. This is required for running Docker containers.
-
-3. **Docker Installation**: Install Docker on your on-premises server by following the official installation instructions for your specific operating system.
-
-4. **Docker Compose (Optional)**: If you plan to use Docker Compose for managing multi-container applications, ensure it is installed as well.
-
-### Prerequisites for Kubernetes:
-
-1. **Linux Nodes**: If you are setting up a Kubernetes cluster on-premises, you'll need Linux servers to act as worker nodes. Ensure these servers meet the hardware requirements for Kubernetes.
-
-2. **Container Runtime**: Choose a container runtime compatible with Kubernetes, such as Docker, containerd, or CRI-O. Install and configure the container runtime on each worker node.
-
-3. **Kubernetes Control Plane**: Set up a Kubernetes control plane (master node) on a dedicated server or VM. You can use Kubernetes distributions like kubeadm, kops, or Rancher to help with this setup.
-
-4. **Networking**: Ensure that the network is correctly configured to allow communication between nodes in the cluster. Kubernetes uses a range of ports for internal communication.
-
-5. **Container Images**: Prepare and store container images of your application in a container registry accessible to your cluster, such as Docker Hub, Azure Container Registry, or an on-premises registry.
-
-6. **kubectl**: Install the `kubectl` command-line tool on your management machine. `kubectl` is used for interacting with the Kubernetes cluster.
-
-7. **Security and Access Control**: Implement security best practices for your Kubernetes cluster, including role-based access control (RBAC) and network policies.
-
-8. **Storage**: Set up storage solutions like NFS, Ceph, or local storage for persistent volumes in your Kubernetes cluster.
-
-9. **Monitoring and Logging**: Plan for monitoring and logging solutions (e.g., Prometheus, Grafana, ELK Stack) to gain visibility into the cluster's performance and troubleshoot issues.
-
-10. **Backup and Disaster Recovery**: Implement backup and disaster recovery procedures to protect your Kubernetes cluster and applications.
-
-Ensure that you thoroughly review the documentation for each component and follow best practices for installation, configuration, and security to ensure a stable and secure on-premises DevOps, Docker, and Kubernetes environment.
-### ----------------------------------------------------------------------------------------------------------------
