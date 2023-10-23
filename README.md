@@ -160,6 +160,113 @@ Continuous Integration (CI) with Azure DevOps On-premises involves setting up a 
 
 By following these steps, you can set up Continuous Integration (CI) with Azure DevOps On-premises, allowing you to automate the build and testing processes for your applications while keeping your code and infrastructure on your own servers.
 ### ----------------------------------------------------------------------------------------------------------------
+### Running Tests in CI in Azure On-premises
+Running tests in a Continuous Integration (CI) pipeline in Azure DevOps On-premises involves configuring your build pipeline to execute various types of tests (unit tests, integration tests, UI tests, etc.) as part of the build process. Here are the general steps to run tests in a CI pipeline within an Azure DevOps On-premises environment:
+
+1. **Create or Configure Build Pipeline**:
+
+   - If you haven't already created a build pipeline, follow the steps in the previous response to set up a build pipeline in Azure DevOps Server.
+
+2. **Source Code Repository**:
+
+   - Ensure that your source code repository contains the necessary test code and configurations. Your test code should be structured to be automatically executed during the build process.
+
+3. **Define Testing Tasks**:
+
+   - Within your build pipeline, add tasks to execute tests. Azure DevOps Server provides various built-in tasks for running tests, and you can also use custom scripts or testing frameworks.
+
+   - For example, if you're using Visual Studio Test, you can add a "Visual Studio Test" task and configure it to discover and run tests.
+
+   - If you're using other testing frameworks or tools like NUnit, xUnit, MSTest, or Selenium for UI tests, configure the corresponding tasks or scripts.
+
+4. **Test Configuration**:
+
+   - Configure the test tasks to use appropriate test adapters and frameworks. You may need to specify the path to the test assemblies or test projects.
+
+5. **Code Coverage**:
+
+   - If you want to measure code coverage, you can add tasks or scripts to collect coverage information during the test run. Code coverage tools like CodeCov, Coverlet, or Visual Studio's built-in coverage tools can be integrated as needed.
+
+6. **Artifact Publishing**:
+
+   - If your tests generate any test reports, you can publish these as build artifacts or integrate them with test reporting tools.
+
+7. **Test Execution Order**:
+
+   - You can specify the order in which different types of tests (unit, integration, UI) are executed as part of your build pipeline.
+
+8. **Post-Test Actions**:
+
+   - Define what should happen after the tests are run. For example, you may want to publish test results, send notifications, or trigger deployment processes based on the test results.
+
+9. **Run the Pipeline**:
+
+   - Save and run your build pipeline to trigger the test execution. You can also configure CI triggers to automatically run tests upon code commits.
+
+10. **Test Reporting and Analysis**:
+
+   - View the test results and reports in Azure DevOps Server to assess the success or failure of the tests and review code coverage data if collected.
+
+11. **Integration with Test Reporting Tools** (Optional):
+
+   - If you're using third-party test reporting and analysis tools, you can integrate these tools with Azure DevOps Server for more in-depth reporting and analysis.
+
+12. **Troubleshooting and Debugging**:
+
+   - In case of test failures, investigate the issues, update your test scripts, and re-run the tests as needed.
+
+By following these steps, you can set up your CI pipeline in Azure DevOps On-premises to run tests automatically, providing a mechanism to ensure the quality and reliability of your code with each code change.
+### ----------------------------------------------------------------------------------------------------------------
+### Artifacts and Package Management in Azure DevOps On-premises
+Artifacts and package management in Azure DevOps On-premises involve the creation, storage, and management of various types of artifacts and packages, including binary dependencies, containers, and other artifacts, within your self-hosted Azure DevOps Server. This helps in managing and distributing software components efficiently. Here's how you can set up artifacts and package management in an on-premises Azure DevOps environment:
+
+1. **Install Azure DevOps Server**:
+   - To use Azure DevOps Server for artifacts and package management, first, ensure that you have Azure DevOps Server (formerly TFS - Team Foundation Server) installed on your on-premises infrastructure.
+
+2. **Enable Artifacts**:
+   - In Azure DevOps Server, you'll want to enable the Artifacts feature for your project. Artifacts can be used to store and manage various package types.
+
+3. **Choose Package Management Tool**:
+   - Decide which package management tool you want to use based on your needs. The common ones are:
+     - **Azure Artifacts**: Integrated with Azure DevOps, it allows you to create and publish NuGet, npm, Maven, and Python packages.
+     - **NuGet**: Suitable for managing .NET packages.
+     - **npm**: Used for JavaScript packages.
+     - **Maven**: Primarily used for Java packages.
+     - **Docker Registry**: For container images.
+     - **Python Package Index (PyPI)**: For Python packages.
+     - **Universal Packages**: A format-agnostic package manager for any type of package.
+
+4. **Create Feeds**:
+   - In Azure Artifacts, you can create package feeds. Feeds are like containers for your packages, and you can create different feeds for different types of packages or for different purposes.
+
+5. **Publish Packages**:
+   - Use the package manager corresponding to your package type to publish your packages to the created feeds. For example, if you're using NuGet, you can use `nuget push` to publish packages.
+
+6. **Connect to Feeds**:
+   - Configure your build pipelines to connect to the appropriate feeds to fetch the required packages during the build process. You can do this by adding service connections or by using a `.npmrc`, `nuget.config`, or `settings.xml` file for npm, NuGet, and Maven, respectively.
+
+7. **Artifact Sources in Build Pipelines**:
+   - In your build pipelines, define artifact sources (e.g., npm, NuGet, Maven) and specify the feed details. This allows your pipelines to fetch packages during the build process.
+
+8. **Package Versioning**:
+   - Decide on a versioning strategy for your packages, especially if you're managing multiple versions of a package. Semantic versioning is a common approach.
+
+9. **Access Control**:
+   - Implement access control to ensure that only authorized users can publish and consume packages.
+
+10. **Retention Policies**:
+    - Set up retention policies to automatically clean up older versions of packages to manage disk space.
+
+11. **Monitoring and Reporting**:
+    - Regularly monitor the health and performance of your package management system and generate reports on package usage and consumption.
+
+12. **Backup and Restore**:
+    - Implement a backup and restore strategy to protect your package management data.
+
+By following these steps, you can effectively manage and distribute software artifacts and packages within your Azure DevOps On-premises environment. This ensures that your build and release pipelines have reliable access to the required dependencies, enabling smooth and efficient software development and deployment processes.
+### ----------------------------------------------------------------------------------------------------------------
+### 
+### ----------------------------------------------------------------------------------------------------------------
 ### Azure DevOps as Blue-Green Continuous Deployments
 Azure DevOps provides powerful tools for implementing continuous deployment pipelines, including support for blue-green deployments. Blue-green deployments are a deployment strategy that allows you to release a new version of your application without causing downtime for your users. Here's how you can set up blue-green deployments in Azure DevOps:
 
